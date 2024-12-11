@@ -1,0 +1,32 @@
+Gra składa się głównie z czterech elementów:
+
+- Gracz :	 - porusza się lewo prawo
+
+- Piłka: 	- jest przyczepiona do gracza
+	- po wciśnięciu strzałki w górę, wystrzeliwuję się
+	- na kolizji: 	
+	1. Z graczem: Odpija się od paletki gracza w predefiniowany sposób (im dalej od środka paletki, tym pod większym kątem się odbija)
+	2. Z obiektem z tagiem BallDestroyer: niszczy się przy kolizji
+	3. Wszystko inne: odbicia symulowane za pomocą silnika fizycznego w Unity
+	- Multiplikacja piłki tworzy dwie dodatkowe kopie w losowym kierunku (Metoda publiczna używana przez Upgrade multiplikacji piłki)
+	- Layer Collision Matrix (Nie koliduje z obiektami na warstwie Upgrade i Ball)
+
+- Brick:	- Przy kolizji z piłką niszczy się
+	- ma szansę (1%) na to, że upuści Upgrade
+	- Zaawansowane Bricki, dziedziczą po Brick (poruszają się, pojawiają inne bricki)
+
+- Upgrade: 	- Spada po pojawieniu się 
+		- Po kolizij z graczem, wykonuję ApplyUpgrade
+		- Inne upgrady rozszeżają Upgrade
+		
+Skrypty do omówienia:
+-	Gameover.cs
+-	LoadLevel.cs
+-	Player.cs
+-	Ball.cs
+-	Brick.cs (Przejść po specjalnych brickach)
+-	Upgrade.cs (Przejść po upgradach)
+
+Efekty przy poruszaniu: Component particle system.
+Levele zapisane jako prefabrykaty Tilesetów z ProBuildera.
+Uzyskać dostęp do zmiennej typu private w inspektorze, protected - public ale tylko dla dziedziczących po nim skryptów
